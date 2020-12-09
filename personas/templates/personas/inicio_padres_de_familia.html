@@ -1,0 +1,28 @@
+{% extends 'base/base.html' %}
+
+{% block body %}
+<div class="row mt-5">
+  <h5 class="col-12">Sistema de inasistencias</h5>
+  <p class="col-12">Bienvenido {{ user }}</p>
+  <p class="col-12">Inasistencias</p>
+  {% if familias %}
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Estudiantes a cargo</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for familia in familias %}
+      <tr>
+        <td><a href="{% url 'personas:inicio_estudiante' familia.estudiante.id %}">{{ familia.estudiante }}</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <p class="text-success col-12">No tiene personas registradas a su cargo.</p>
+  {% endif %}
+  <button type="button" class="btn btn-primary"><a class="text-white" href="{% url 'logout' %}">Salir</a></button>
+</div>
+{% endblock body %}

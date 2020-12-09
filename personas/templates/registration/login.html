@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+<div class="row mt-5">
+  <div class="col-12 offset-md-1 col-md-10 offset-lg-2 col-lg-8 offset-xl-4 col-xl-4">
+    <h5>Ingreso al sistema de control de asistencia</h5>
+    <form method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      {{ form|crispy }}
+    <button type="submit" class="btn btn-primary">Ingresar</button>
+    </form>
+  </div>
+</div>
+{% endblock body %}
